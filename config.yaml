@@ -94,9 +94,11 @@ synced_folders:
 # Extensions
 #
 # Install a list of extensions automatically
-#extensions:
-#  - Chassis/Tester
-#  - git@github.com:Chassis/memcache.git
+extensions:
+  - Chassis/Tester
+  - Chassis/MailHog
+  - Chassis/nodejs
+  - Chassis/Xdebug
 
 # PHP version
 # Values: 5.6, 7.0, 7.1, 7.2 (or 5.6.30)
