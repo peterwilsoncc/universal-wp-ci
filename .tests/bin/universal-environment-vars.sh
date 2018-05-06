@@ -5,6 +5,8 @@ function set_environment_vars {
 		UNICI_PROJECT_DIRECTORY=$( pwd ) # Circle CI's env-var for this doesn't quite work.
 	elif [ "$TRAVIS" == 'true' ]; then
 		UNICI_PROJECT_DIRECTORY=$TRAVIS_BUILD_DIR
+	elif [ -f '/vagrant/content/config.yaml' ]; then
+		UNICI_PROJECT_DIRECTORY=/vagrant/content
 	fi
 
 	WP_VERSION=${WP_VERSION:-latest}
