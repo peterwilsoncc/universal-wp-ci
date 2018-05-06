@@ -16,7 +16,8 @@ function set_environment_vars {
 
 function dump_enviroment_vars {
 	for var in WP_VERSION WP_TESTS_VERSION UNICI_PROJECT_DIRECTORY UNICI_TMPDIR WP_TESTS_DIR; do
-		echo "$var=${!var}" 1>&2
+		echo "$var=${!var}"
+		echo "export $var=${!var}" >> $BASH_ENV
 	done
 }
 

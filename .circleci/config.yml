@@ -18,3 +18,8 @@ jobs:
           name: "Set Environment Variables"
           command: |
             bash .tests/bin/universal-environment-vars.sh
+            source $BASH_ENV
+      - run:
+          name: "Test Environment Variables"
+          command: |
+            echo $UNICI_PROJECT_DIRECTORY
