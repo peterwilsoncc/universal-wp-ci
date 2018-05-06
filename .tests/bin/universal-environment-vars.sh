@@ -36,6 +36,43 @@ function set_environment_vars {
 	WP_TESTS_DIR=${WP_TESTS_DIR:-$UNICI_TMPDIR/wpdevel/tests/phpunit}
 }
 
+function clean_wp_version_vars {
+	# WordPress archives will be downloaded from GitHub, so we need to do a
+	# bit of tidy up to allow for common terms.
+
+	# Downloading and grepping the latest version taken from WP-CLI scaffolds.
+	if [[ $WP_TESTS_VERSION == 'latest' || $WP_VERSION == 'latest' ]]; then
+		download http://api.wordpress.org/core/version-check/1.7/ $UNICI_TMPDIR/wp-latest.json
+		grep '[0-9]+\.[0-9]+(\.[0-9]+)?' $UNICI_TMPDIR/wp-latest.json
+		local latest_version=$(grep -o '"version":"[^"]*' $UNICI_TMPDIR/wp-latest.json | sed 's/"version":"//')
+		if [[ -z "$latest_version" ]]; then
+			echo "Latest WordPress version could not be found"
+			exit 1
+		fi
+		if [[ $WP_TESTS_VERSION == 'latest' ]]; then
+			WP_TESTS_VERSION=$latest_version
+		fi
+		if [[ $WP_VERSION == 'latest' ]]; then
+			WP_VERSION=$latest_version
+		fi
+	fi
+
+	# x.x releases of WordPress Develop are tagged x.x.0
+	if [[ $WP_TESTS_VERSION =~ ^[0-9]+\.[0-9]+$ ]]; then
+		WP_TESTS_VERSION=${WP_TESTS_VERSION}.0
+	elif [[ $WP_TESTS_VERSION == 'nightly' || $WP_TESTS_VERSION == 'trunk' ]]; then
+		WP_TESTS_VERSION=master
+	fi
+
+	# x.x releases of WordPress Core are tagged x.x
+	if [[ $WP_VERSION =~ [0-9]+\.[0-9]+\.[0] ]]; then
+		# version x.x.0 means the first release of the major version, so strip off the .0 and download version x.x
+		WP_VERSION=${WP_VERSION%??}
+	elif [[ $WP_VERSION == 'nightly' || $WP_VERSION == 'trunk' ]]; then
+		WP_VERSION=master
+	fi
+}
+
 function dump_enviroment_vars {
 	for var in WP_VERSION WP_TESTS_VERSION UNICI_PROJECT_DIRECTORY UNICI_DB_NAME UNICI_DB_USER UNICI_DB_PASS UNICI_DB_HOST UNICI_TMPDIR WP_TESTS_DIR; do
 		echo "$var=${!var}"
@@ -48,4 +85,5 @@ function dump_enviroment_vars {
 }
 
 set_environment_vars
+clean_wp_version_vars
 dump_enviroment_vars
