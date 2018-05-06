@@ -3,6 +3,9 @@
 /uploads
 /upgrades
 
+# Local Chassis Overrides
+/config.local.yaml
+
 # Local dev files often committed in error.
 .DS_Store
 .AppleDouble
