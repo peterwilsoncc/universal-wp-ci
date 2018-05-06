@@ -17,7 +17,11 @@ function set_environment_vars {
 function dump_enviroment_vars {
 	for var in WP_VERSION WP_TESTS_VERSION UNICI_PROJECT_DIRECTORY UNICI_TMPDIR WP_TESTS_DIR; do
 		echo "$var=${!var}"
-		echo "export $var=${!var}" >> $BASH_ENV
+		if [ "$CIRCLECI" == 'true' ]; then
+			echo "export $var=${!var}" >> $BASH_ENV
+		else
+			export $var=$(eval echo "\$$var")
+		fi
 	done
 }
 

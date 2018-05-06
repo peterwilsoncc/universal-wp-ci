@@ -8,8 +8,7 @@ php:
     - 7.0
 
 install:
-    - bash .tests/bin/universal-environment-vars.sh
-    - source $BASH_ENV
+    - source .tests/bin/universal-environment-vars.sh
     - echo $UNICI_PROJECT_DIRECTORY
 
 script:
