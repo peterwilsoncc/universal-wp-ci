@@ -1,0 +1,19 @@
+sudo: false
+
+language:
+    - php
+    - node_js
+
+php:
+    - 7.0
+
+install:
+    - bash .tests/bin/universal-environment-vars.sh
+    - source $BASH_ENV
+    - echo $UNICI_PROJECT_DIRECTORY
+
+script:
+    - exit 0;
+
+notifications:
+    email: false
