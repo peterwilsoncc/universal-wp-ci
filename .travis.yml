@@ -7,7 +7,7 @@ language:
 php:
     - 7.0
 
-install:
+before_install:
     - source .tests/bin/universal-environment-vars.sh
     - echo $UNICI_PROJECT_DIRECTORY
 
