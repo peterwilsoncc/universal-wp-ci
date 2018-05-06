@@ -20,5 +20,5 @@ function dump_enviroment_vars {
 	done
 }
 
-set_environment_vars();
-dump_enviroment_vars();
+set_environment_vars
+dump_enviroment_vars
