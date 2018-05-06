@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+function download {
+	if [ `which curl` ]; then
+		curl -sL "$1" > "$2";
+	elif [ `which wget` ]; then
+		wget -nv -O "$2" "$1"
+	fi
+}
+
 function set_environment_vars {
 	if [ "$CIRCLECI" == 'true' ]; then
 		UNICI_PROJECT_DIRECTORY=$( pwd ) # Circle CI's env-var for this doesn't quite work.
