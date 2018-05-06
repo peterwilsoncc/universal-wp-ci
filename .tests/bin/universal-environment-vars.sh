@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 function set_environment_vars {
-	if [ $CIRCLECI == 'true' ]; then
+	if [ "$CIRCLECI" == 'true' ]; then
 		UNICI_PROJECT_DIRECTORY=$( pwd ) # Circle CI's env-var for this doesn't quite work.
-	elif [ $TRAVIS == 'true' ]; then
+	elif [ "$TRAVIS" == 'true' ]; then
 		UNICI_PROJECT_DIRECTORY=$TRAVIS_BUILD_DIR
 	fi
 
