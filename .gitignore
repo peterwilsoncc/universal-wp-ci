@@ -1,0 +1,21 @@
+# Content directory
+*.log
+/uploads
+/upgrades
+
+# Local dev files often committed in error.
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+/vendor
+/node_modules
+
+# Project files
+*.sublime-project
+*.sublime-workspace
+/.vscode
+/.idea
