@@ -101,7 +101,10 @@ extensions:
   - Chassis/Xdebug
 
 # PHP version
-# Values: 5.6, 7.0, 7.1, 7.2 (or 5.6.30)
+# Values: 7.0, 7.1, 7.2
+# Note Chassis also supports 5.6 but the version of PHPUnit
+# included in the composer.json file is limited to the versions
+# above.
 php: 7.0
 
 # VirtualBox-specific customisations.
