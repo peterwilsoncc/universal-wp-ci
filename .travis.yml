@@ -11,10 +11,11 @@ before_install:
     - source .tests/bin/universal-environment-vars.sh
 
 install:
+    - composer install
     - source .tests/bin/install.sh
 
 script:
-    - exit 0;
+    - ./vendor/bin/phpunit
 
 notifications:
     email: false

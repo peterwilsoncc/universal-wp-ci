@@ -27,3 +27,20 @@ jobs:
           name: "Install WordPress test suite"
           command: |
             bash .tests/bin/install.sh
+      # Composer
+      - restore_cache:
+          keys:
+          - v1-dep-composer-{{ checksum "composer.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dep-composer
+      - run:
+          name: "Install Project Dependencies (Composer)"
+          command: composer install -n --prefer-dist
+      - save_cache:
+          paths:
+            - ./vendor
+          key: v1-dep-composer-{{ checksum "composer.lock" }}
+      - run:
+          name: "Run WP Test suite"
+          command: |
+            ./vendor/bin/phpunit
