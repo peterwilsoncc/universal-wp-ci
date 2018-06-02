@@ -27,6 +27,3 @@ jobs:
           name: "Install WordPress test suite"
           command: |
             bash .tests/bin/install.sh
-            ls -lah $UNICI_TMPDIR
-            ls -lah $UNICI_TMPDIR/wpcore
-            ls -lah $UNICI_TMPDIR/wpdevel

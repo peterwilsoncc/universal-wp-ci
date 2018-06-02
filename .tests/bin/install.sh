@@ -32,3 +32,7 @@ download_wp_tests() {
 
 download_wp_core
 download_wp_tests
+
+ls -lah $UNICI_TMPDIR
+ls -lah $UNICI_TMPDIR/wpcore
+ls -lah $UNICI_TMPDIR/wpdevel
