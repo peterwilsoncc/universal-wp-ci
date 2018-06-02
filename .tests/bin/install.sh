@@ -31,10 +31,6 @@ download_wp_tests() {
 }
 
 install_db() {
-	if [ ${SKIP_DB_CREATE} = "true" ]; then
-		return 0
-	fi
-
 	# parse DB_HOST for port or socket references
 	local PARTS=(${UNICI_DB_HOST//\:/ })
 	local DB_HOSTNAME=${PARTS[0]};
