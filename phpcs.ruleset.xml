@@ -3,9 +3,8 @@
 	<description>Sniffs for WordPress projects.</description>
 
 	<rule ref="./vendor/humanmade/coding-standards/ruleset.xml">
-
+		<!-- Add any exlusions or custom configuration requirements here -->
 	</rule>
-
 
 	<!-- Check all PHP files in directory tree by default. -->
 	<arg name="extensions" value="php"/>
