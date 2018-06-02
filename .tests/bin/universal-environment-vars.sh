@@ -34,6 +34,7 @@ function set_environment_vars {
 
 	UNICI_TMPDIR=$(mktemp -d 2>/dev/null || mktemp -d -t 'unici-temp')
 	WP_TESTS_DIR=${WP_TESTS_DIR:-$UNICI_TMPDIR/wpdevel/tests/phpunit}
+	WP_CORE_DIR=${WP_CORE_DIR:-$UNICI_TMPDIR/wpcore}
 }
 
 function clean_wp_version_vars {
@@ -74,7 +75,7 @@ function clean_wp_version_vars {
 }
 
 function dump_enviroment_vars {
-	for var in WP_VERSION WP_TESTS_VERSION UNICI_PROJECT_DIRECTORY UNICI_DB_NAME UNICI_DB_USER UNICI_DB_PASS UNICI_DB_HOST UNICI_TMPDIR WP_TESTS_DIR; do
+	for var in WP_VERSION WP_TESTS_VERSION UNICI_PROJECT_DIRECTORY UNICI_DB_NAME UNICI_DB_USER UNICI_DB_PASS UNICI_DB_HOST UNICI_TMPDIR WP_TESTS_DIR WP_CORE_DIR; do
 		echo "$var=${!var}"
 		if [ "$CIRCLECI" == 'true' ]; then
 			echo "export $var=${!var}" >> $BASH_ENV
