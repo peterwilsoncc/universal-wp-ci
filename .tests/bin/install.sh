@@ -20,14 +20,14 @@ download_wp_core() {
 }
 
 download_wp_tests() {
-	if [ -d $WP_TESTS_DIR ]; then
+	if [ -d $WP_DEVEL_DIR ]; then
 		return;
 	fi
 
-	mkdir -p $WP_TESTS_DIR
+	mkdir -p $WP_DEVEL_DIR
 
 	download https://github.com/WordPress/wordpress-develop/archive/$WP_TESTS_VERSION.tar.gz $UNICI_TMPDIR/wordpress-tests.tar.gz
-	tar --strip-components=1 -zxmf $UNICI_TMPDIR/wordpress-tests.tar.gz -C $WP_TESTS_DIR
+	tar --strip-components=1 -zxmf $UNICI_TMPDIR/wordpress-tests.tar.gz -C $WP_DEVEL_DIR
 }
 
 install_db() {

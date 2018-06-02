@@ -13,7 +13,7 @@ register_shutdown_function( function() {
 if ( getenv( 'WP_TESTS_DIR' ) ) {
 	$wp_develop_dir = getenv( 'WP_TESTS_DIR' );
 } else {
-	$wp_develop_dir = '/vagrant/extensions/Tester/wpdevel';
+	$wp_develop_dir = '/vagrant/extensions/Tester/wpdevel/tests/phpunit';
 }
 
 if ( file_exists( __DIR__ . '/includes/bootstrap.php' ) ) {
@@ -23,7 +23,7 @@ if ( file_exists( __DIR__ . '/includes/bootstrap.php' ) ) {
 	 */
 	$wp_tests_dir = __DIR__;
 } else {
-	$wp_tests_dir = $wp_develop_dir . '/tests/phpunit';
+	$wp_tests_dir = $wp_develop_dir;
 }
 
 require_once $wp_tests_dir . '/includes/functions.php';
