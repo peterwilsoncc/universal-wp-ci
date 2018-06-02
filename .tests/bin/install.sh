@@ -15,7 +15,7 @@ download_wp_core() {
 
 	mkdir -p $WP_CORE_DIR
 
-	download https://github.com/WordPress/WordPress/archive/$WP_VERSION.tar.gz  $UNICI_TMPDIR/wordpress-core.tar.gz
+	download https://github.com/WordPress/WordPress/archive/$WP_VERSION.tar.gz $UNICI_TMPDIR/wordpress-core.tar.gz
 	tar --strip-components=1 -zxmf $UNICI_TMPDIR/wordpress-core.tar.gz -C $WP_CORE_DIR
 }
 
@@ -26,7 +26,7 @@ download_wp_tests() {
 
 	mkdir -p $WP_TESTS_DIR
 
-	download https://github.com/WordPress/wordpress-develop/archive/$WP_TESTS_VERSION.tar.gz  $UNICI_TMPDIR/wordpress-tests.tar.gz
+	download https://github.com/WordPress/wordpress-develop/archive/$WP_TESTS_VERSION.tar.gz $UNICI_TMPDIR/wordpress-tests.tar.gz
 	tar --strip-components=1 -zxmf $UNICI_TMPDIR/wordpress-tests.tar.gz -C $WP_TESTS_DIR
 }
 
