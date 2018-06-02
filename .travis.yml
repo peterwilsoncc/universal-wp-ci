@@ -16,6 +16,7 @@ install:
 
 script:
     - ./vendor/bin/phpunit
+    - ./vendor/bin/phpcs --standard=phpcs.ruleset.xml . -p
 
 notifications:
     email: false

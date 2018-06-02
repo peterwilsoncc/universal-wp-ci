@@ -49,6 +49,10 @@ jobs:
             - ./vendor
           key: v1-dep-composer-{{ checksum "composer.lock" }}
       - run:
+          name: "Run PHP Code sniffs"
+          command: |
+            ./vendor/bin/phpcs --standard=phpcs.ruleset.xml . -p
+      - run:
           name: "Run WP Test suite"
           command: |
             ./vendor/bin/phpunit
