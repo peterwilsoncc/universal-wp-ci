@@ -52,6 +52,13 @@ install_db() {
 }
 
 config_test_suite() {
+	# portable in-place argument for both GNU sed and Mac OSX sed
+	if [[ $(uname -s) == 'Darwin' ]]; then
+		local ioption='-i.bak'
+	else
+		local ioption='-i'
+	fi
+
 	if [ ! -f wp-tests-config.php ]; then
 		download https://raw.githubusercontent.com/WordPress/wordpress-develop/${WP_TESTS_VERSION}/wp-tests-config-sample.php "$WP_TESTS_DIR"/wp-tests-config.php
 		# remove all forward slashes in the end
