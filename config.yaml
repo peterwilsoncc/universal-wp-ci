@@ -95,10 +95,10 @@ synced_folders:
 #
 # Install a list of extensions automatically
 extensions:
-  - Chassis/Tester
-  - Chassis/MailHog
+  - Chassis/tester
+  - Chassis/mailhog
   - Chassis/nodejs
-  - Chassis/Xdebug
+  - Chassis/xdebug
 
 # PHP version
 # Values: 7.0, 7.1, 7.2
