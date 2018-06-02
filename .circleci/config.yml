@@ -23,3 +23,10 @@ jobs:
           name: "Test Environment Variables"
           command: |
             echo $UNICI_PROJECT_DIRECTORY
+      - run:
+          name: "Install WordPress test suite"
+          command: |
+            bash .tests/bin/install.sh
+            ls -lah $UNICI_TMPDIR
+            ls -lah $UNICI_TMPDIR/wpcore
+            ls -lah $UNICI_TMPDIR/wpdevel

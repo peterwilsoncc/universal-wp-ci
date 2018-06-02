@@ -9,7 +9,12 @@ php:
 
 before_install:
     - source .tests/bin/universal-environment-vars.sh
-    - echo $UNICI_PROJECT_DIRECTORY
+
+install:
+    - source .tests/bin/install.sh
+    - ls -lah $UNICI_TMPDIR
+    - ls -lah $UNICI_TMPDIR/wpcore
+    - ls -lah $UNICI_TMPDIR/wpdevel
 
 script:
     - exit 0;

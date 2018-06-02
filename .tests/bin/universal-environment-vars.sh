@@ -33,7 +33,7 @@ function set_environment_vars {
 	WP_TESTS_VERSION=${WP_TESTS_VERSION:-$WP_VERSION}
 
 	UNICI_TMPDIR=$(mktemp -d 2>/dev/null || mktemp -d -t 'unici-temp')
-	WP_TESTS_DIR=${WP_TESTS_DIR:-$UNICI_TMPDIR/wpdevel/tests/phpunit}
+	WP_TESTS_DIR=${WP_TESTS_DIR:-$UNICI_TMPDIR/wpdevel}
 	WP_CORE_DIR=${WP_CORE_DIR:-$UNICI_TMPDIR/wpcore}
 }
 
