@@ -36,7 +36,7 @@ install_db() {
 	fi
 
 	# parse DB_HOST for port or socket references
-	local PARTS=(${DB_HOST//\:/ })
+	local PARTS=(${UNICI_DB_HOST//\:/ })
 	local DB_HOSTNAME=${PARTS[0]};
 	local DB_SOCK_OR_PORT=${PARTS[1]};
 	local EXTRA=""
@@ -52,7 +52,7 @@ install_db() {
 	fi
 
 	# create database
-	mysqladmin create $DB_NAME --user="$DB_USER" --password="$DB_PASS"$EXTRA
+	mysqladmin create $UNICI_DB_NAME --user="$UNICI_DB_USER" --password="$UNICI_DB_PASS"$EXTRA
 }
 
 download_wp_core
