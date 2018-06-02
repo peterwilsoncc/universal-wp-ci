@@ -51,6 +51,20 @@ install_db() {
 	mysqladmin create $UNICI_DB_NAME --user="$UNICI_DB_USER" --password="$UNICI_DB_PASS"$EXTRA
 }
 
+config_test_suite() {
+	if [ ! -f wp-tests-config.php ]; then
+		download https://raw.githubusercontent.com/WordPress/wordpress-develop/${WP_TESTS_VERSION}/wp-tests-config-sample.php "$WP_TESTS_DIR"/wp-tests-config.php
+		# remove all forward slashes in the end
+		WP_CORE_DIR=$(echo $WP_CORE_DIR | sed "s:/\+$::")
+		sed $ioption "s:dirname( __FILE__ ) . '/src/':'$WP_CORE_DIR/':" "$WP_TESTS_DIR"/wp-tests-config.php
+		sed $ioption "s/youremptytestdbnamehere/$UNICI_DB_NAME/" "$WP_TESTS_DIR"/wp-tests-config.php
+		sed $ioption "s/yourusernamehere/$UNICI_DB_USER/" "$WP_TESTS_DIR"/wp-tests-config.php
+		sed $ioption "s/yourpasswordhere/$UNICI_DB_PASS/" "$WP_TESTS_DIR"/wp-tests-config.php
+		sed $ioption "s|localhost|${UNICI_DB_HOST}|" "$WP_TESTS_DIR"/wp-tests-config.php
+	fi
+}
+
 download_wp_core
 download_wp_tests
 install_db
+config_test_suite
